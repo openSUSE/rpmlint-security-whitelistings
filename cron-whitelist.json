@@ -1,0 +1,16 @@
+[
+	{
+		"package": "atop-daemon",
+		"path": "/etc/cron.d/atop",
+		"audits": [
+			{
+				"bug": "bsc#1150533",
+				"comment": "Performs maintenance and (re)starting of the atop daemon",
+				"digest": "sha256:d8b23c4f9bda803bc8627c23361635a876bc49fc0ace0d98fcd92c7fb33ac430",
+				"related": {
+					"/usr/share/atop/atop.daily": "sha256:298a6e86b0862a1f2492b11b3af327850ba8c58232ef99753e8c6606548aa5cd"
+				}
+			}
+		]
+	}
+]
