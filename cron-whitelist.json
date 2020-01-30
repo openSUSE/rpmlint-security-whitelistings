@@ -20,16 +20,6 @@
 			}
 		}
 	},
-	"leafnode": {
-		"audits": {
-			"bsc#1150545": {
-				"comment": "Cleans up newsgroup entries as 'news'",
-				"digests": {
-					"/etc/cron.daily/leafnode": "sha256:2b78027c06cab7c3e7cb41ee6efbf13fb611a8dfcf74c25d47bf8221a6c268a9"
-				}
-			}
-		}
-	},
 	"logdigest": {
 		"audits": {
 			"bsc#1150546": {
