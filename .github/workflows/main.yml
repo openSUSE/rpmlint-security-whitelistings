@@ -17,5 +17,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Verify JSON Syntax
       run: |
-        sudo apt-get install yajl-tools
+        sudo apt-get -qqq install yajl-tools
         ./verify.py
