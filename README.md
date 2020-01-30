@@ -75,15 +75,15 @@ does *not* support such comments, however.
                 # issues.
                 "digests": {
 
-                    # the keys are the absolute file paths # that are subject
+                    # the keys are the absolute file paths that are the subject
                     # of the whitelisting
                     #
-                    # the values are of the form <alg>:<digest>, where <alg>
+                    # the values are of the form [alg]:[digest], where [alg]
                     # is a hash algorithm supported by the Python hashlib.
                     "/etc/cron.d/atop": "sha256:d8b23c4f9bda803bc8627c23361635a876bc49fc0ace0d98fcd92c7fb33ac430"
 
                     # it is also possible to explicitly whitelist a file with
-                    # arbirary content for special cases where the content of
+                    # arbitrary content for special cases where the content of
                     # the whitelisted file isn't fixed for some reason
                     "/usr/share/atop/atop.daily": "skip:<none>",
                 }
