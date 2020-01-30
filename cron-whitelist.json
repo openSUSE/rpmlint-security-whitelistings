@@ -25,7 +25,8 @@
 			"bsc#1150546": {
 				"comment": "scours through log files to find 'interesting' information and mails it to root",
 				"digests": {
-					"/etc/cron.daily/logdigest": "sha256:1dcd29ceaa35914c126bf76b0b00b955de332744636573dc2b907c1c542f81c4"
+					"/etc/cron.daily/logdigest": "sha256:1dcd29ceaa35914c126bf76b0b00b955de332744636573dc2b907c1c542f81c4",
+					"/etc/cron.d/logdigest-all-ignores-autogeneration": "sha256:052d8f93980ade99937c2a4b972d5cf5a77367c9af6c7b02f0e05e8ca5b06797"
 				}
 			}
 		}
@@ -46,6 +47,36 @@
 				"comment": "removes outdated file in /tmp and some other directories",
 				"digests": {
 					"/etc/cron.daily/tmpwatch": "sha256:b2e7cb31833f7737215b2bb44d9e8ab42f5b0787ca613b176a490248ad035adb"
+				}
+			}
+		}
+	},
+	"cacti": {
+		"audits": {
+			"bsc#1150534": {
+				"comment": "collects system data and stores it in a local database, complex PHP",
+				"digests": {
+					"/etc/cron.d/cacti": "sha256:d7537bab09182f50b7437a267c0743a1f7fb680555c977f7811d70214083aafd"
+				}
+			}
+		}
+	},
+	"storeBackup": {
+		"audits": {
+			"bsc#1150555": {
+				"comment": "and old school backup solution written in Perl",
+				"digests": {
+					"/etc/cron.daily/storebackup": "sha256:2d4f43fb71c5f4a7e5a0f24f8b20332bff0fe0f8b57c304ab66420cd88a7bb4c"
+				}
+			}
+		}
+	},
+	"texlive-filesystem": {
+		"audits": {
+			"bsc#1150556": {
+				"comment": "maintains a couple of texlive shared directories in /var",
+				"digests": {
+					"/etc/cron.daily/suse-texlive": "sha256:6a90ac5013329315002f7f86e6b1ef8232bbaa720e43d39d49a0aafe75b8708d"
 				}
 			}
 		}
