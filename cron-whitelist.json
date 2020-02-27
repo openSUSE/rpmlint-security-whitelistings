@@ -80,5 +80,15 @@
 				}
 			}
 		}
+	},
+	"nextcloud": {
+		"audits": {
+			"bsc#1162254": {
+				"comment": "default-disabled cron job that runs PHP cleanup logic for nextcloud as unprivileged user",
+				"digests": {
+					"/etc/cron.d/nextcloud": "sha256:176aed8f9adc79cc3d0a75a223730d621cf9435d7baee03823afc558c110b76d"
+				}
+			}
+		}
 	}
 }
