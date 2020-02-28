@@ -100,5 +100,15 @@
 				}
 			}
 		}
+	},
+	"matomo": {
+		"audits": {
+			"bsc#1150548": {
+				"comment": "a complex PHP script is called as wwwrun user",
+				"digests": {
+					"/etc/cron.d/matomo-archive": "sha256:b55bb543d9e890522aaabd016e8e8c80e3d0b6529f10da3ea264348e375eaf82"
+				}
+			}
+		}
 	}
 }
