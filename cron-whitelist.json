@@ -90,5 +90,15 @@
 				}
 			}
 		}
+	},
+	"texlive-filesystem": {
+		"audits": {
+			"bsc#1150556": {
+				"comment": "more or less broken security concept, disagreement with package maintainer. due to importance of TeX a wildcard whitelisting until the matter is settled",
+				"digests": {
+					"/etc/cron.daily/suse-texlive": "skip:<none>"
+				}
+			}
+		}
 	}
 }
