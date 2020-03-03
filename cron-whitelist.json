@@ -120,5 +120,18 @@
 				}
 			}
 		}
+	},
+	"sarg": {
+		"audits": {
+			"bsc#1150554": {
+				"comment": "builds statistics based on Squid logfile metadata. include sarg-reports which is SUSE specific and important for privilege dropping.",
+				"digests": {
+					"/etc/cron.daily/suse.de-sarg": "sha256:d536dc68e198189149048a907ea6d56a7ee9fc732ae8fec5a4072ad06640e359",
+					"/etc/cron.monthly/suse.de-sarg": "sha256:d536dc68e198189149048a907ea6d56a7ee9fc732ae8fec5a4072ad06640e359",
+					"/etc/cron.weekly/suse.de-sarg": "sha256:d536dc68e198189149048a907ea6d56a7ee9fc732ae8fec5a4072ad06640e359",
+					"/usr/sbin/sarg-reports": "sha256:00ad25400bdc2031cd09f9b8f9e56c448c93b6b89a702d36dce6a385d79e637c"
+				}
+			}
+		}
 	}
 }
