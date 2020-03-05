@@ -71,16 +71,6 @@
 			}
 		}
 	},
-	"texlive-filesystem": {
-		"audits": {
-			"bsc#1150556": {
-				"comment": "maintains a couple of texlive shared directories in /var",
-				"digests": {
-					"/etc/cron.daily/suse-texlive": "sha256:6a90ac5013329315002f7f86e6b1ef8232bbaa720e43d39d49a0aafe75b8708d"
-				}
-			}
-		}
-	},
 	"nextcloud": {
 		"audits": {
 			"bsc#1162254": {

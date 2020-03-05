@@ -50,10 +50,10 @@ def checkDuplicateEntries(path):
 
 	def check_duplicates(ordered_pairs):
 
-		d = {}
+		seen = set()
 
-		for k, v in ordered_pairs:
-			if k in d:
+		for k, _ in ordered_pairs:
+			if k in seen:
 				# don't raise an exception right away we want
 				# to collect all duplicates not just the first
 				# one
@@ -61,9 +61,9 @@ def checkDuplicateEntries(path):
 					"duplicate dictionary key in {} encountered: {}".format(path, k)
 				)
 			else:
-				d[k] = v
+				seen.add(k)
 
-		return d
+		return ordered_pairs
 
 	with open(path, 'rb') as json_fd:
 
