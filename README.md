@@ -30,6 +30,9 @@ Therefore a list of related audits is maintained for each whitelisting entry
 complete with Bugzilla reference, file digests and an optional whitelisting
 comment.
 
+Every audit section must list the complete state of a package, not just
+incremental changes to a previous audit.
+
 Types of Whitelistings
 ----------------------
 
