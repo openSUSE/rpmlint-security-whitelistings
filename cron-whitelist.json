@@ -78,6 +78,12 @@
 				"digests": {
 					"/etc/cron.d/nextcloud": "sha256:176aed8f9adc79cc3d0a75a223730d621cf9435d7baee03823afc558c110b76d"
 				}
+			},
+			"bsc#1168964": {
+				"comment": "follow-up whitelisting for no-op change in comments",
+				"digests": {
+					"/etc/cron.d/nextcloud": "sha256:5f883ad50e790de95f4ffbafd9515dc0bc88f9e49fcb404d16ed0d781fbd4c77"
+				}
 			}
 		}
 	},
