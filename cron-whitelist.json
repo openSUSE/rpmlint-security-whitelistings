@@ -115,7 +115,7 @@
 					"/etc/cron.daily/opa-cablehealth": "sha256:7e837d9ba6f1361d63bdb5e716e1f5ce9ac774f22fa79ef32d51a9e0c925c11b"
 				}
 			},
-			"sr#813053": {
+			"bsc#1172859": {
 				"comment": "just a version string changed in the script",
 				"digests": {
 					"/etc/cron.daily/opa-cablehealth": "sha256:56fda31f1bfbda32d628250ed17a72ef04823b120ad1449045b380b9983d86e8"
