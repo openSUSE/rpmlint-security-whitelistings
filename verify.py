@@ -4,6 +4,8 @@ import os, sys
 import subprocess
 import glob
 import json
+import urllib.request
+import tempfile
 
 def printerr(*args, **kwargs):
 
@@ -74,6 +76,40 @@ def checkDuplicateEntries(path):
 
 	return len(errors) == 0
 
+whitelisting = None
+
+def fetchWhitelistingModule():
+	whitelisting_module_url = "https://raw.githubusercontent.com/openSUSE/rpmlint-checks/master/Whitelisting.py"
+
+	# only available from python3.5 and newer
+	import importlib.util
+
+	with tempfile.NamedTemporaryFile(suffix = ".py") as temp:
+		req = urllib.request.urlopen(whitelisting_module_url)
+		temp.write(req.read())
+		temp.flush()
+
+		spec = importlib.util.spec_from_file_location("Whitelisting", temp.name)
+		whitelisting = importlib.util.module_from_spec(spec)
+		spec.loader.exec_module(whitelisting)
+		return whitelisting
+
+
+def checkParsing(path):
+
+	global whitelisting
+	if not whitelisting:
+		whitelisting = fetchWhitelistingModule()
+
+	parser = whitelisting.WhitelistParser(path)
+
+	try:
+		entries = parser.parse()
+		return True
+	except Exception as e:
+		printerr(e)
+		return False
+
 our_dir = os.path.dirname(os.path.realpath(__file__))
 pathspec = os.path.join( our_dir, "*.json" )
 res = 0
@@ -84,6 +120,9 @@ for json_file in glob.glob(pathspec):
 		res = 1
 
 	if not checkDuplicateEntries(json_file):
+		res = 1
+
+	if not checkParsing(json_file):
 		res = 1
 
 sys.exit(res)
