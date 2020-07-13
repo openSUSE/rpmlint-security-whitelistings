@@ -135,5 +135,15 @@
 				}
 			}
 		}
+	},
+	"ppc64-diag": {
+		"audits": {
+			"bsc#1173044": {
+				"comment": "ppc specific hardware health diagnosis and error reporting",
+				"digests": {
+					"/etc/cron.daily/run_diag_encl": "sha256:5519586bca9edc47be4c76faa7353eb8a0ecd68b9f04c0b20e7acfdb9d9eb261"
+				}
+			}
+		}
 	}
 }
