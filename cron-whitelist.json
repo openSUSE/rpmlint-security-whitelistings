@@ -120,6 +120,12 @@
 				"digests": {
 					"/etc/cron.daily/opa-cablehealth": "sha256:56fda31f1bfbda32d628250ed17a72ef04823b120ad1449045b380b9983d86e8"
 				}
+			},
+			"bsc#1174464": {
+				"comment": "finally a wildcard whitelisting since there's a version string encoded in the script",
+				"digests": {
+					"/etc/cron.daily/opa-cablehealth": "skip:<none>"
+				}
 			}
 		}
 	},
