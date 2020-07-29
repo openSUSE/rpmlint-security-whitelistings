@@ -101,7 +101,12 @@ def checkParsing(path):
 	if not whitelisting:
 		whitelisting = fetchWhitelistingModule()
 
-	parser = whitelisting.WhitelistParser(path)
+	meta_whitelists = ("device-files-whitelist.json", "world-writable-whitelist.json")
+
+	if os.path.basename(path) in meta_whitelists:
+		parser = whitelisting.MetaWhitelistParser(path)
+	else:
+		parser = whitelisting.DigestWhitelistParser(path)
 
 	try:
 		entries = parser.parse()
