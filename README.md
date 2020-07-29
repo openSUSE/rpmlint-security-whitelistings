@@ -36,6 +36,21 @@ incremental changes to a previous audit.
 Types of Whitelistings
 ----------------------
 
+### Digest Based Whitelistings
+
+This type of whitelist cares about the contents of files in certain file
+system locations. It whitelists file system entries by name and an optional
+content digest.
+
+### Metadata Based Whitelistings
+
+This type of whitelist cares about a file's metadata like file type and UNIX
+permissions. It whitelists file system entries by comparing the file type,
+mode bits and ownership.
+
+Instances of Whitelistings
+--------------------------
+
 ### Cron Jobs
 
 The file `cron-whitelist.json` contains whitelisting entries for files
@@ -45,6 +60,28 @@ risk candidates for security issues. Therefore the security team puts
 restrictions on the introduction of new cron jobs or changes to existing cron
 jobs.
 
+### Device Files
+
+The file `device-files-whitelist.json` contains whitelisting entries for
+device file packaged in RPMs. Device files in RPMs should be an unusual
+event. Since device files with bad permissions may allow unprivileged users to
+access sensitive system devices it is important to restrict packaging of this
+type of files. A metadata whitelisting is used for whitelist any occurences of
+device files in packages.
+
+### World Writable Files
+
+There shouldn't be any files packaged that are world-writable. A few
+exceptions are public sticky-bit directories or UNIX domain sockets that are
+accessible to everybody. These occurrences are covered by this metadata
+whitelisting.
+
+### Note About setuid/setgid Bits
+
+Setuid, setgid or capability bits are currently not kept track of here,
+because they are managed by the [permissions
+package](https://github.com/openSUSE/permissions).
+
 Whitelisting Examples
 ---------------------
 
@@ -53,6 +90,7 @@ being able to more easily document the data structure. The actual JSON format
 does *not* support such comments, however.
 
 <pre>
+# a digest based whitelist
 {
     # the package name
     "atop-daemon": {
@@ -89,6 +127,40 @@ does *not* support such comments, however.
                     # arbitrary content for special cases where the content of
                     # the whitelisted file isn't fixed for some reason
                     "/usr/share/atop/atop.daily": "skip:<none>",
+                }
+            }
+        }
+    }
+}
+</pre>
+
+<pre>
+# a metadata based whitelist
+{
+    "filesystem": {
+        "audits": {
+            "bsc#123456": {
+                "comment": "some typical special files",
+                # here we use a meta entry instead of a "digests" entry to
+                # whitelist file properties in contrast to file contents.
+                "meta": {
+                    "/some/dev": {
+                        # denotes the whitelisted type of file. supported
+                        # characters are currently:
+                        # '-': regular file
+                        # 'd': directory
+                        # 'c': character device
+                        # 'b': block device
+                        # 's': UNIX domain socket
+                        "type": "b",
+			# the allowed UNIX octal file mode
+                        "mode": "0666",
+                        # for device files this denotes the allowed minor and
+                        # major device number separated by comma
+                        "dev": "1,2",
+                        # the allowed user and group ownership for the file
+                        "owner": "root:root"
+                    }
                 }
             }
         }

@@ -1,0 +1,29 @@
+{
+	"bind-chrootenv": {
+		"audits": {
+			"bsc#1174642": {
+				"comment": "Chroot duplicates of some uncritical character devices. urandom was historically packaged non-world-writable, probably to avoid the rpmlint error triggering.",
+				"meta": {
+					"/var/lib/named/dev/null": {
+						"type": "c",
+						"mode": "0666",
+						"dev": "1,3",
+                                                "owner": "root:root"
+					},
+					"/var/lib/named/dev/random": {
+						"type": "c",
+						"mode": "0666",
+						"dev": "1,8",
+						"owner": "root:root"
+					},
+					"/var/lib/named/dev/urandom": {
+						"type": "c",
+						"mode": "0660",
+						"dev": "1,9",
+                                                "owner": "root:root"
+					}
+				}
+			}
+		}
+	}
+}
