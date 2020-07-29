@@ -78,28 +78,40 @@ def checkDuplicateEntries(path):
 
 whitelisting = None
 
-def fetchWhitelistingModule():
-	whitelisting_module_url = "https://raw.githubusercontent.com/openSUSE/rpmlint-checks/master/Whitelisting.py"
-
+def loadLocalModule(path, name):
 	# only available from python3.5 and newer
 	import importlib.util
+	spec = importlib.util.spec_from_file_location(name, path)
+	module = importlib.util.module_from_spec(spec)
+	spec.loader.exec_module(module)
+	return module
+
+
+def fetchWhitelistingModule():
+	whitelisting_module_url = "https://raw.githubusercontent.com/openSUSE/rpmlint-checks/master/Whitelisting.py"
 
 	with tempfile.NamedTemporaryFile(suffix = ".py") as temp:
 		req = urllib.request.urlopen(whitelisting_module_url)
 		temp.write(req.read())
 		temp.flush()
 
-		spec = importlib.util.spec_from_file_location("Whitelisting", temp.name)
-		whitelisting = importlib.util.module_from_spec(spec)
-		spec.loader.exec_module(whitelisting)
-		return whitelisting
+		return loadLocalModule(temp.name, "Whitelisting")
 
+
+def getWhitelistingModule():
+
+	wm = os.environ.get("WHITELISTING_MODULE")
+
+	if wm:
+		return loadLocalModule(wm, "Whitelisting")
+	else:
+		return fetchWhitelistingModule()
 
 def checkParsing(path):
 
 	global whitelisting
 	if not whitelisting:
-		whitelisting = fetchWhitelistingModule()
+		whitelisting = getWhitelistingModule()
 
 	meta_whitelists = ("device-files-whitelist.json", "world-writable-whitelist.json")
 
