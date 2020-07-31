@@ -1,0 +1,64 @@
+{
+	"bind-chrootenv": {
+		"audits": {
+			"bsc#1174642": {
+				"comment": "Chroot duplicate of the log socket. Packaged as %ghost, therefore 'appears' as a regular file.",
+				"meta": {
+					"/var/lib/named/dev/log": {
+						"type": "-",
+						"mode": "0666",
+                                                "owner": "root:root"
+					}
+				}
+			}
+		}
+	},
+	"filesystem": {
+		"audits": {
+			"bsc#1174642": {
+				"comment": "Public standard sticky-bit directories",
+				"meta": {
+					"/tmp": {
+						"type": "d",
+						"mode": "1777",
+						"owner": "root:root"
+					},
+					"/var/tmp": {
+						"type": "d",
+						"mode": "1777",
+						"owner": "root:root"
+					},
+					"/var/spool/mail": {
+						"type": "d",
+						"mode": "1777",
+						"owner": "root:root"
+					},
+					"/tmp/.X11-unix": {
+						"type": "d",
+						"mode": "1777",
+						"owner": "root:root"
+					},
+					"/tmp/.ICE-unix": {
+						"type": "d",
+						"mode": "1777",
+						"owner": "root:root"
+					}
+				}
+			}
+		}
+	},
+	"nscd": {
+		"audits": {
+			"bsc#1174642": {
+				"comment": "nss caching daemon socket. is packaged as %ghost, therefore 'appears' to be a regular file.",
+				"meta": {
+					"/run/nscd/socket": {
+						"type": "-",
+						"mode": "0666",
+						"owner": "root:root"
+					}
+				}
+			}
+		}
+	}
+}
