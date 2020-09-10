@@ -18,7 +18,7 @@
 					},
 					"/var/lib/named/dev/urandom": {
 						"type": "c",
-						"mode": "0660",
+						"mode": "0664",
 						"dev": "1,9",
                                                 "owner": "root:root"
 					}
