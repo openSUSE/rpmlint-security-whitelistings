@@ -7,7 +7,7 @@
 					"/var/lib/named/dev/log": {
 						"type": "-",
 						"mode": "0666",
-                                                "owner": "root:root"
+						"owner": "root:root"
 					}
 				}
 			}
